@@ -1,0 +1,26 @@
+<h1>Hello from {{$ctrl.test}}!</h1>
+
+<p> {{ $ctrl.getTitle() }}</p>
+<p> {{ $ctrl.getForecastDate() }}</p> 
+<p> {{ $ctrl.getValidTime() }}</p>
+
+<table border=1>
+	<thead>
+		<tr>
+			<th>Forecast</th>
+			<th>Latitude</th>
+			<th>Longitude</th>
+			<th>Location</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="row in $ctrl.getWeatherForecast()">
+			<td>{{ row._forecast }}</td>
+			<td>{{ row._lat }}</td>
+			<td>{{ row._lon }}</td>
+			<td>{{ row._name }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>{{$ctrl.data}}</p>

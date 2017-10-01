@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="neaWeatherApp">
+
+  <head>
+    <!-- fix the absolute path links to angular js dependencies" -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    <script src="xml2json.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="core/core.module.js"></script>
+    <script src="core/neaapi/neaapi.module.js"></script>
+    <script src="core/neaapi/neaapi.service.js"></script>
+    <script src="nowcast/nowcast.module.js"></script>
+    <script src="nowcast/nowcast.component.js"></script>
+
+  </head>
+
+  <body>
+
+    <nowcast></nowcast>
+
+  </body>
+
+</html>
