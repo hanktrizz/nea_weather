@@ -1,10 +1,10 @@
 angular.module('nowcast')
 .component('nowcast', {
 	templateUrl: 'nowcast/nowcast.template.html',
-	controller: ['$http', 'neaapi', function NowcastController ($http, neaapi) {
+	controller: ['neaapi', function TodayController (neaapi) {
     var self = this;
 		self.test = "nowcast controller";
-    
+
     neaapi.nowcast().get(function(data){
       self.data = data;
     });

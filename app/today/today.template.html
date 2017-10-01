@@ -1,0 +1,38 @@
+<h1>Hello from {{$ctrl.test}}!</h1>
+
+<p> {{ $ctrl.getTitle() }}</p>
+<p> {{ $ctrl.getForecastDate() }}</p> 
+<p> {{ $ctrl.getValidTime() }}</p>
+<p> {{ $ctrl.getTempLow() }}</p>
+<p> {{ $ctrl.getTempHigh() }}</p>
+<p> {{ $ctrl.getHumidityLow() }}</p>
+<p> {{ $ctrl.getHumidityHigh() }}</p>
+<p> {{ $ctrl.getWindDirection() }}</p>
+<p> {{ $ctrl.getWindSpeed() }}</p>
+<p> {{ $ctrl.getMainForecast() }} </p>
+<p> {{ $ctrl.getMainForecastDescription() }} </p>
+
+<table border=1>
+	<thead>
+		<tr>
+			<th>Time of day</th>
+			<th>Time Period</th>
+			<th>North</th>
+			<th>South</th>
+			<th>East</th>
+			<th>West</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in $ctrl.getForecastTimePeriodArea()">
+			<td>{{ item.time_of_day }}</td>
+			<td>{{ item.timePeriod }}</td>
+			<td>{{ item.wxnorth }}</td>
+			<td>{{ item.wxsouth }}</td>
+			<td>{{ item.wxeast }}</td>
+			<td>{{ item.wxwest }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>{{$ctrl.data}}</p>

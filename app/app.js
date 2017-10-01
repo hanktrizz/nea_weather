@@ -1,4 +1,5 @@
 angular.module('neaWeatherApp', [
 	'core',
-	'nowcast'
+	'nowcast',
+	'today'
 	]);
