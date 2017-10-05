@@ -1,7 +1,7 @@
 angular.module('today')
 .component('today', {
 	templateUrl: 'today/today.template.html',
-	controller: ['neaapi', function NowcastController (neaapi) {
+	controller: ['neaapi', function TodayController (neaapi) {
     var self = this;
 		self.test = "today controller";
     
