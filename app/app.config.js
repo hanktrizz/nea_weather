@@ -5,13 +5,23 @@ angular.module('neaWeatherApp')
 
 	$routeProvider
 	.when("/", {
-    	template: "<h1>This is the main page</h1><p><a href='#!/nowcast'>nowcast</a></p>"
+    	template: "<h1>This is the main page</h1>" +
+                  "<p><a href='#!/nowcast'>nowcast</a></p>" +
+                  "<p><a href='#!/today'>today</a></p>" + 
+                  "<p><a href='#!/fourDays'>Four Days</a></p>" + 
+                  "<p><a href='#!/heavyRain'>Heavy Rain Warnings</a></p>"
     })
     .when('/nowcast', {
       	template: '<nowcast></nowcast>'
     })
     .when('/today', {
       	template: "<today></today>"
+    })
+    .when('/fourDays', {
+        template: "<four-days></four-days>"
+    })
+    .when('/heavyRain', {
+        template: "<heavy-rain></heavy-rain>"
     })
     .otherwise({
         template : "<h1>None</h1><p>Nothing has been selected</p>"
