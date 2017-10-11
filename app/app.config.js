@@ -9,7 +9,8 @@ angular.module('neaWeatherApp')
                   "<p><a href='#!/nowcast'>nowcast</a></p>" +
                   "<p><a href='#!/today'>today</a></p>" + 
                   "<p><a href='#!/fourDays'>Four Days</a></p>" + 
-                  "<p><a href='#!/heavyRain'>Heavy Rain Warnings</a></p>"
+                  "<p><a href='#!/heavyRain'>Heavy Rain Warnings</a></p>" +
+                  "<p><a href='#!/psi'>psi</a></p>"
     })
     .when('/nowcast', {
       	template: '<nowcast></nowcast>'
@@ -22,6 +23,9 @@ angular.module('neaWeatherApp')
     })
     .when('/heavyRain', {
         template: "<heavy-rain></heavy-rain>"
+    })
+    .when('/psi', {
+        template: "<psi></psi>"
     })
     .otherwise({
         template : "<h1>None</h1><p>Nothing has been selected</p>"

@@ -4,5 +4,6 @@ angular.module('neaWeatherApp', [
 	'nowcast',
 	'today',
 	'fourDays',
-	'heavyRain'
+	'heavyRain',
+	'psi'
 	]);

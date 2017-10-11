@@ -9,6 +9,7 @@ angular.module('core.neaapi')
 	var todayURL = url + "24hrs_forecast" + key;
 	var fourDaysURL = url + "4days_outlook" + key;
 	var heavyRainURL = url + "heavy_rain_warning" + key;
+	var psiURL = url + "psi_update" + key;
 	
 	var xml_to_json = function(xml) {
 		var x2js = new X2JS();
@@ -44,6 +45,10 @@ angular.module('core.neaapi')
 
 	this.heavyRain = function() {
 		return getResource(heavyRainURL);
+	};
+
+	this.psi = function() {
+		return getResource(psiURL);
 	};
 
 }]);

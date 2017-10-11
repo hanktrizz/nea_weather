@@ -1,0 +1,28 @@
+<h1>Hello from {{$ctrl.test}}!</h1>
+
+<p> {{ $ctrl.getTitle() }}</p>
+<p> {{ $ctrl.getSource() }}</p> 
+
+<table border=1>
+	<thead>
+		<tr>
+			<th>Region</th>
+			<th>Latitude</th>
+			<th>Longitude</th>
+			<th ng-repeat="p in $ctrl.pollutants">{{p}}</th>
+			<th>Timestamp</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="region in $ctrl.getRegions()">
+			<td>{{ $ctrl.abbrs[region.id] }}</td>
+			<td>{{ region.latitude }}</td>
+			<td>{{ region.longitude }}</td>
+			<td ng-repeat="p in $ctrl.pollutants">{{ $ctrl.getPollutantReading(region.record.reading, p)}}</td>
+			<td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd-MM-yy hh:mm:ss" }}</td>	
+			<!-- <td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd/MM/yyyy" }}</td> -->
+		</tr>
+	</tbody>
+</table>
+
+<p>{{$ctrl.data}}</p>
