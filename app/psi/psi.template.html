@@ -9,6 +9,7 @@
 			<th>Region</th>
 			<th>Latitude</th>
 			<th>Longitude</th>
+			<th>PSI Descriptor</th>
 			<th ng-repeat="p in $ctrl.pollutants">{{p}}</th>
 			<th>Timestamp</th>
 		</tr>
@@ -18,8 +19,11 @@
 			<td>{{ $ctrl.abbrs[region.id] }}</td>
 			<td>{{ region.latitude }}</td>
 			<td>{{ region.longitude }}</td>
-			<td ng-repeat="p in $ctrl.pollutants">{{ $ctrl.getPollutantReading(region.record.reading, p)}}</td>
-			<td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd-MM-yy hh:mm:ss" }}</td>	
+			<td>{{ $ctrl.getPSIDescriptor(region.record.reading[0]._value) }}</td>
+			<td ng-repeat="p in $ctrl.pollutants">
+				{{ $ctrl.getPollutantReading(region.record.reading, p)}}
+			</td>
+			<td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd-MM-yy hh:mm:ss" }}</td>
 			<!-- <td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd/MM/yyyy" }}</td> -->
 		</tr>
 	</tbody>

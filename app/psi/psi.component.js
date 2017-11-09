@@ -11,7 +11,14 @@ angular.module('psi')
                   "rCE" : "Central Region",
                   "rWE" : "West Region",
                   "rEA" : "East Region"};
+
     self.pollutants = ["NPSI", "NO2_1HR_MAX", "PM10_24HR", "PM25_24HR", "SO2_24HR", "CO_8HR_MAX", "O3_8HR_MAX", "NPSI_CO", "NPSI_O3", "NPSI_PM10", "NPSI_PM25", "NPSI_SO2"];
+
+    self.psi_bands = [{"threshold": 50, "descriptor": "Good"},
+                  {"threshold": 100, "descriptor": "Moderate"},
+                  {"threshold": 200, "descriptor": "Unhealthy"},
+                  {"threshold": 300, "descriptor": "Very unhealthy"},
+                  {"threshold": 10000, "descriptor": "Hazardous"}];
 
     neaapi.psi().get(function(data){
       self.data = data;
@@ -44,6 +51,18 @@ angular.module('psi')
         }
       }
       return "nothinghere...";
+    }
+
+  self.getPSIDescriptor = function (psi) {
+      if(self.data) {
+        for(var i=0; i<self.psi_bands.length; i++) {
+          var current_band = self.psi_bands[i];
+          if(psi <= current_band.threshold) {
+            return current_band.descriptor;
+          }
+        }
+      }
+      return "";
     }
 
     self.getDate = function(str) {
