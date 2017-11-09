@@ -10,7 +10,43 @@ angular.module('core.neaapi')
 	var fourDaysURL = url + "4days_outlook" + key;
 	var heavyRainURL = url + "heavy_rain_warning" + key;
 	var psiURL = url + "psi_update" + key;
+	var pm25URL = url + "pm2.5_update" + key;
 	
+	var abbrLUT = {"BR": "Mist",
+					"CL": "Cloudy",
+					"DR": "Drizzle",
+					"FA": "Fair (Day)",
+					"FG": "Fog",
+					"FN": "Fair (Night)",
+					"FW": "Fair & Warm",
+					"HG": "Heavy Thundery Showers with Gusty Winds",
+					"HR": "Heavy Rain",
+					"HS": "Heavy Showers",
+					"HT": "Heavy Thundery Showers",
+					"HZ": "Hazy",
+					"LH": "Slightly Hazy",
+					"LR": "Light Rain",
+					"LS": "Light Showers",
+					"OC": "Overcast",
+					"PC": "Partly Cloud (Day)",
+					"PN": "Partly Cloud (Night)",
+					"PS": "Passing Showers",
+					"RA": "Moderate Rain",
+					"SH": "Showers",
+					"SK": "Strong Winds, Showers",
+					"SN": "Snow",
+					"SR": "Strong Winds, Rain",
+					"SS": "Snow Showers",
+					"SU": "Sunny",
+					"SW": "Strong Winds",
+					"TL": "Thundery Showers",
+					"WC": "Windy, Cloudy",
+					"WD": "Windy",
+					"WF": "Windy Fair",
+					"WR": "Windy Rain",
+					"WS": "Windy Showers"
+				};
+
 	var xml_to_json = function(xml) {
 		var x2js = new X2JS();
 		var json = x2js.xml_str2json(xml);
@@ -29,7 +65,6 @@ angular.module('core.neaapi')
 			}
 		});
 	};
-
 
 	this.nowcast = function() {		
 		return getResource(nowcastURL);
@@ -50,5 +85,13 @@ angular.module('core.neaapi')
 	this.psi = function() {
 		return getResource(psiURL);
 	};
+
+	this.pm25 = function() {
+		return getResource(pm25URL);
+	};
+
+	this.weatherAbbrToInterp = function(abbr) {
+		return abbrLUT[abbr];
+	}
 
 }]);
