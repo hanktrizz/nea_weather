@@ -33,6 +33,17 @@ angular.module('nowcast')
       }
     };
 
+    self.getCentralWeatherForecast = function() {
+      if(self.data) {
+        for(var i=0; i<self.data.channel.item.weatherForecast.area.length; i++) {
+          var area = self.data.channel.item.weatherForecast.area[i];
+          if(area._name == "City") {
+            return this.abbrToInterp(area._forecast);
+          }
+        }
+      }
+    }
+
     self.abbrToInterp = function(abbr) {
       return neaapi.weatherAbbrToInterp(abbr);
     }
