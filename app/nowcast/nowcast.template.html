@@ -15,7 +15,7 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="row in $ctrl.getWeatherForecast()">
-			<td>{{ row._forecast }}</td>
+			<td>{{ $ctrl.abbrToInterp(row._forecast) }}</td>
 			<td>{{ row._lat }}</td>
 			<td>{{ row._lon }}</td>
 			<td>{{ row._name }}</td>

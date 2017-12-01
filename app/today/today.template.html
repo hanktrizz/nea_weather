@@ -9,7 +9,7 @@
 <p> {{ $ctrl.getHumidityHigh() }}</p>
 <p> {{ $ctrl.getWindDirection() }}</p>
 <p> {{ $ctrl.getWindSpeed() }}</p>
-<p> {{ $ctrl.getMainForecast() }} </p>
+<p> {{ $ctrl.abbrToInterp($ctrl.getMainForecast()) }} </p>
 <p> {{ $ctrl.getMainForecastDescription() }} </p>
 
 <table border=1>
@@ -27,10 +27,10 @@
 		<tr ng-repeat="item in $ctrl.getForecastTimePeriodArea()">
 			<td>{{ item.time_of_day }}</td>
 			<td>{{ item.timePeriod }}</td>
-			<td>{{ item.wxnorth }}</td>
-			<td>{{ item.wxsouth }}</td>
-			<td>{{ item.wxeast }}</td>
-			<td>{{ item.wxwest }}</td>
+			<td>{{ $ctrl.abbrToInterp(item.wxnorth) }}</td>
+			<td>{{ $ctrl.abbrToInterp(item.wxsouth) }}</td>
+			<td>{{ $ctrl.abbrToInterp(item.wxeast) }}</td>
+			<td>{{ $ctrl.abbrToInterp(item.wxwest) }}</td>
 		</tr>
 	</tbody>
 </table>

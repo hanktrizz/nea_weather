@@ -98,5 +98,9 @@ angular.module('today')
       }
     }
 
+    self.abbrToInterp = function(abbr) {
+      return neaapi.weatherAbbrToInterp(abbr);
+    }
+
 	}]
 });

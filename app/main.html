@@ -1,0 +1,12 @@
+<h1>This is the main page</h1>
+
+<div ng-controller="NowcastController as now">
+	<p>{{ now.abbrToInterp(now.getWeatherForecast()[11]._forecast) }}</p>
+</div>
+
+<p><a href='#!/nowcast'>nowcast</a></p>
+<p><a href='#!/today'>today</a></p>
+<p><a href='#!/fourDays'>Four Days</a></p>
+<p><a href='#!/heavyRain'>Heavy Rain Warnings</a></p>
+<p><a href='#!/psi'>psi</a></p>
+<p><a href='#!/pm25'>PM 2.5</a></p>

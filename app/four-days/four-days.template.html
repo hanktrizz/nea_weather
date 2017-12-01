@@ -4,38 +4,28 @@
 <p> {{ $ctrl.getForecastDate() }}</p> 
 <p> {{ $ctrl.getValidTime() }}</p>
 
-<p> {{ $ctrl.getDays() }}</p>
-<p> {{ $ctrl.getForecastDescriptions() }}</p>
-<p> {{ $ctrl.getForecasts() }}</p>
-<p> {{ $ctrl.getTemperatures() }}</p>
-<p> {{ $ctrl.getRelativeHumidities() }}</p>
-<p> {{ $ctrl.getWindInformation() }}</p>
-<!--
-<p> {{ $ctrl.getMainForecast() }} </p>
-<p> {{ $ctrl.getMainForecastDescription() }} </p>
-
 <table border=1>
 	<thead>
 		<tr>
-			<th>Time of day</th>
-			<th>Time Period</th>
-			<th>North</th>
-			<th>South</th>
-			<th>East</th>
-			<th>West</th>
+			<th>Day</th>
+			<th>Forecast Description</th>
+			<th>Forecast</th>
+			<th>Temperature</th>
+			<th>Humidity</th>
+			<th>Wind Information</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="item in $ctrl.getForecastTimePeriodArea()">
-			<td>{{ item.time_of_day }}</td>
-			<td>{{ item.timePeriod }}</td>
-			<td>{{ item.wxnorth }}</td>
-			<td>{{ item.wxsouth }}</td>
-			<td>{{ item.wxeast }}</td>
-			<td>{{ item.wxwest }}</td>
+		<tr ng-repeat="day in $ctrl.getDays()">
+			<td>{{ $ctrl.getDays()[$index] }}</td>
+			<td>{{ $ctrl.getForecastDescriptions()[$index] }}</td>
+			<td>{{ $ctrl.abbrToInterp($ctrl.getForecasts()[$index]) }}</td>
+			<td>{{ $ctrl.getTemperatures()[$index] }}</td>
+			<td>{{ $ctrl.getRelativeHumidities()[$index] }}</td>
+			<td>{{ $ctrl.getWindInformation()[$index] }}</td>
 		</tr>
 	</tbody>
 </table>
--->
+
 <p>{{$ctrl.data}}</p>
 

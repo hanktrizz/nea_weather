@@ -32,4 +32,8 @@ angular.module('nowcast')
         return self.data.channel.item.weatherForecast.area;
       }
     };
+
+    self.abbrToInterp = function(abbr) {
+      return neaapi.weatherAbbrToInterp(abbr);
+    }
 }]);

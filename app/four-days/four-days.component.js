@@ -70,39 +70,9 @@ angular.module('fourDays')
       }
     }
     
-    /*
-    self.getMainForecast = function () {
-      if(self.data) {
-        return self.data.channel.item.wxmain;
-      }
+    self.abbrToInterp = function(abbr) {
+      return neaapi.weatherAbbrToInterp(abbr);
     }
-    
-    self.getMainForecastDescription = function () {
-      if(self.data) {
-        return self.data.channel.item.forecast;
-      }
-    }
-    
-    self.getMainForecastDescription = function () {
-      if(self.data) {
-        return self.data.channel.item.forecast;
-      }
-    }
-
-    self.getForecastTimePeriodArea = function() {
-      if(self.data) {
-        var keys = Object.keys(self.data.channel);
-        var timePeriods = keys.slice(3);
-        var array = [];
-        for(timePeriod of timePeriods) {
-          var obj = self.data.channel[timePeriod];
-          obj['time_of_day'] = timePeriod;
-          array.push(obj);
-        };
-        return array;
-      }
-    }
-    */
 
 	}]
 });

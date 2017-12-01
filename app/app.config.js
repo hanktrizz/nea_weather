@@ -5,13 +5,7 @@ angular.module('neaWeatherApp')
 
 	$routeProvider
 	.when("/", {
-    	template: "<h1>This is the main page</h1>" +
-                  "<p><a href='#!/nowcast'>nowcast</a></p>" +
-                  "<p><a href='#!/today'>today</a></p>" + 
-                  "<p><a href='#!/fourDays'>Four Days</a></p>" + 
-                  "<p><a href='#!/heavyRain'>Heavy Rain Warnings</a></p>" +
-                  "<p><a href='#!/psi'>psi</a></p>" +
-                  "<p><a href='#!/pm25'>PM 2.5</a></p>"
+        templateUrl: 'main.html'
     })
     .when('/nowcast', {
       	template: '<nowcast></nowcast>'
@@ -33,5 +27,5 @@ angular.module('neaWeatherApp')
     })
     .otherwise({
         template : "<h1>None</h1><p>Nothing has been selected</p>"
-    });;
+    });
 }]);
