@@ -8,7 +8,6 @@
 	<thead>
 		<tr>
 			<th>Day</th>
-			<th>Forecast Description</th>
 			<th>Forecast</th>
 			<th>Temperature</th>
 			<th>Humidity</th>
@@ -19,7 +18,6 @@
 		<tr ng-repeat="day in $ctrl.getDays()">
 			<td>{{ $ctrl.getDays()[$index] }}</td>
 			<td>{{ $ctrl.getForecastDescriptions()[$index] }}</td>
-			<td>{{ $ctrl.abbrToInterp($ctrl.getForecasts()[$index]) }}</td>
 			<td>{{ $ctrl.getTemperatures()[$index] }}</td>
 			<td>{{ $ctrl.getRelativeHumidities()[$index] }}</td>
 			<td>{{ $ctrl.getWindInformation()[$index] }}</td>

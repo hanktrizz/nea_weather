@@ -35,7 +35,7 @@ angular.module('fourDays')
       }
     }
     
-    self.getForecasts = function () {
+    self.getForecastsIcons = function () {
       if(self.data) {
         var forecasts = self.data.channel.item.weatherForecast.icon;
         return forecasts;
@@ -67,10 +67,6 @@ angular.module('fourDays')
           return "Direction: " + item._direction + ", Speed: " + item._speed;
         });
       }
-    }
-    
-    self.abbrToInterp = function(abbr) {
-      return neaapi.weatherAbbrToInterp(abbr);
     }
 
 }]);
