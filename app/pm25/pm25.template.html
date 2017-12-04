@@ -23,7 +23,7 @@
 			<td>{{ region.record.reading._value }}</td>
 			<td>{{ $ctrl.getBand(region.record.reading._value) }}</td>
 			<td>{{ $ctrl.getDescriptor(region.record.reading._value) }}</td>
-			<td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd-MM-yy hh:mm:ss" }}</td>	
+			<td>{{ $ctrl.getDate(region.record._timestamp) }}</td>	
 		</tr>
 	</tbody>
 </table>
