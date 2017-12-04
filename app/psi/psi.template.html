@@ -23,8 +23,7 @@
 			<td ng-repeat="p in $ctrl.pollutants">
 				{{ $ctrl.getPollutantReading(region.record.reading, p)}}
 			</td>
-			<td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd-MM-yy hh:mm:ss" }}</td>
-			<!-- <td>{{ $ctrl.getDate(region.record._timestamp) | date : "dd/MM/yyyy" }}</td> -->
+			<td>{{ $ctrl.getDate(region.record._timestamp) }}</td>
 		</tr>
 	</tbody>
 </table>

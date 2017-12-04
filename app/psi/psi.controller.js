@@ -11,7 +11,8 @@ angular.module('psi')
                   "rWE" : "West Region",
                   "rEA" : "East Region"};
 
-    self.pollutants = ["NPSI", "NO2_1HR_MAX", "PM10_24HR", "PM25_24HR", "SO2_24HR", "CO_8HR_MAX", "O3_8HR_MAX", "NPSI_CO", "NPSI_O3", "NPSI_PM10", "NPSI_PM25", "NPSI_SO2"];
+    self.pollutants = ["NPSI", "NO2_1HR_MAX", "PM10_24HR", "PM25_24HR", "SO2_24HR", "CO_8HR_MAX", 
+        "O3_8HR_MAX", "NPSI_CO", "NPSI_O3", "NPSI_PM10", "NPSI_PM25", "NPSI_SO2"];
 
     self.psi_bands = [{"threshold": 50, "descriptor": "Good"},
                   {"threshold": 100, "descriptor": "Moderate"},
@@ -42,14 +43,13 @@ angular.module('psi')
       }
     }
 
-    self.getPollutantReading = function (arr, pollutant) {
-      for(var i=0; i<arr.length; i++) {
-        var item = arr[i];
+    self.getPollutantReading = function (readings, pollutant) {
+      for(var i=0; i<readings.length; i++) {
+        var item = readings[i];
         if(item._type == pollutant) {
           return item._value;
         }
       }
-      return "nothinghere...";
     }
 
     self.getPSIDescriptor = function (psi) {
@@ -65,9 +65,8 @@ angular.module('psi')
     }
 
     self.getDate = function(str) {
-      var s = str.slice(0,4) + "-" + str.slice(4,6) + "-" + str.slice(6,8) + "T" + str.slice(8,10) + ":" + str.slice(10,12) + ":" + str.slice(12,14);
-      console.log(str + " ---> " + s);
-      return new Date(s);
+      var s = str.slice(0,4) + "-" + str.slice(4,6) + "-" + str.slice(6,8) + " " + str.slice(8,10) + ":" + str.slice(10,12) + ":" + str.slice(12,14);
+      return s;
     }
 
     self.getNPSI = function() {
