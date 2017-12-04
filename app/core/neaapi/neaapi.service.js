@@ -12,7 +12,7 @@ angular.module('core.neaapi')
 	var psiURL = url + "psi_update" + key;
 	var pm25URL = url + "pm2.5_update" + key;
 	
-	var abbrLUT = {"BR": "Mist",
+	var forecastDescriptionMap = {"BR": "Mist",
 					"CL": "Cloudy",
 					"DR": "Drizzle",
 					"FA": "Fair (Day)",
@@ -90,8 +90,8 @@ angular.module('core.neaapi')
 		return getResource(pm25URL);
 	};
 
-	this.weatherAbbrToInterp = function(abbr) {
-		return abbrLUT[abbr];
+	this.getForecastDescription = function(abbreviation) {
+		return forecastDescriptionMap[abbreviation];
 	}
 
 }]);
