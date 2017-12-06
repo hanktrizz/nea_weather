@@ -1,21 +1,24 @@
-<h1>Hello from {{$ctrl.test}}!</h1>
 
-<p> {{ $ctrl.getTitle() }}</p>
-<p> {{ $ctrl.getForecastDate() }}</p> 
-<p> {{ $ctrl.getValidTime() }}</p>
-<p> {{ $ctrl.getTempLow() }}</p>
-<p> {{ $ctrl.getTempHigh() }}</p>
-<p> {{ $ctrl.getHumidityLow() }}</p>
-<p> {{ $ctrl.getHumidityHigh() }}</p>
-<p> {{ $ctrl.getWindDirection() }}</p>
-<p> {{ $ctrl.getWindSpeed() }}</p>
-<p> {{ $ctrl.abbrToInterp($ctrl.getMainForecast()) }} </p>
-<p> {{ $ctrl.getMainForecastDescription() }} </p>
+<div class="row">
+	<div class="col">
+		<h2> {{ $ctrl.getTitle() }} ({{ $ctrl.getValidTime() }})</h2>
+	</div>
+</div>
 
-<table border=1>
-	<thead>
+<div class="row">
+	<div class="col">
+		<h4> {{ $ctrl.getMainForecastDescription() }} </h4>
+	</div>
+	<div class="col">
+		<h4>{{ $ctrl.getTempLow() }}°C - {{ $ctrl.getTempHigh() }}°C</h4>
+		<h4>Humidity: {{ $ctrl.getHumidityLow() }}% - {{ $ctrl.getHumidityHigh() }}%</h4>
+		<h4>Wind: {{ $ctrl.getWindDirection() }} ({{ $ctrl.getWindSpeed() }})</h4>
+	</div>
+</div>
+
+<table class="table table-striped table-responsive">
+	<thead class="thead-light">
 		<tr>
-			<th>Time of day</th>
 			<th>Time Period</th>
 			<th>North</th>
 			<th>South</th>
@@ -25,12 +28,11 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="item in $ctrl.getForecastTimePeriodArea()">
-			<td>{{ item.time_of_day }}</td>
 			<td>{{ item.timePeriod }}</td>
-			<td>{{ $ctrl.abbrToInterp(item.wxnorth) }}</td>
-			<td>{{ $ctrl.abbrToInterp(item.wxsouth) }}</td>
-			<td>{{ $ctrl.abbrToInterp(item.wxeast) }}</td>
-			<td>{{ $ctrl.abbrToInterp(item.wxwest) }}</td>
+			<td>{{ item.wxnorth }}</td>
+			<td>{{ item.wxsouth }}</td>
+			<td>{{ item.wxeast }}</td>
+			<td>{{ item.wxwest }}</td>
 		</tr>
 	</tbody>
 </table>

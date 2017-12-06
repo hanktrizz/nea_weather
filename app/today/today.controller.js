@@ -7,6 +7,18 @@ angular.module('nowcast')
     
     neaapi.today().get(function(data){
       self.data = data;
+
+      var keys = Object.keys(self.data.channel);
+      var timePeriods = keys.slice(3);
+
+      for(timePeriod of timePeriods) {
+		self.data.channel[timePeriod].wxnorth = neaapi.getForecastDescription(self.data.channel[timePeriod].wxnorth);
+		self.data.channel[timePeriod].wxsouth = neaapi.getForecastDescription(self.data.channel[timePeriod].wxsouth);
+		self.data.channel[timePeriod].wxeast = neaapi.getForecastDescription(self.data.channel[timePeriod].wxeast);
+		self.data.channel[timePeriod].wxwest = neaapi.getForecastDescription(self.data.channel[timePeriod].wxwest);
+		self.data.channel[timePeriod].wxcentral = neaapi.getForecastDescription(self.data.channel[timePeriod].wxcentral);
+      }
+
     });
 
     self.getTitle = function () {
@@ -31,14 +43,14 @@ angular.module('nowcast')
     self.getTempLow = function() {
       if(self.data) {
         var temperature = self.data.channel.main.temperature;
-        return temperature._low + " " + temperature._unit;
+        return temperature._low;
       }
     }
     
     self.getTempHigh = function() {
       if(self.data) {
         var temperature = self.data.channel.main.temperature;
-        return temperature._high + " " + temperature._unit;
+        return temperature._high;
       }
     }
     
@@ -56,7 +68,9 @@ angular.module('nowcast')
     
     self.getWindDirection = function() {
       if(self.data) {
-        return self.data.channel.main.wind._direction;
+		var direction = self.data.channel.main.wind._direction;
+		direction = direction.slice(0,1).toUpperCase() + direction.slice(1).toLowerCase();
+        return direction;
       }
     }
     
@@ -96,10 +110,6 @@ angular.module('nowcast')
         };
         return array;
       }
-    }
-
-    self.abbrToInterp = function(abbr) {
-      return neaapi.weatherAbbrToInterp(abbr);
     }
 
 }]);
