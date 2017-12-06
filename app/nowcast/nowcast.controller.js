@@ -6,6 +6,12 @@ angular.module('nowcast')
 
     neaapi.nowcast().get(function(data){
       self.data = data;
+
+      var forecasts = self.getWeatherForecast();
+      for(var i=0; i<forecasts.length; i++) {
+        forecasts[i]._forecast = neaapi.getForecastDescription(forecasts[i]._forecast);
+      }
+
     });
 
     self.getTitle = function () {
@@ -38,13 +44,10 @@ angular.module('nowcast')
         for(var i=0; i<self.data.channel.item.weatherForecast.area.length; i++) {
           var area = self.data.channel.item.weatherForecast.area[i];
           if(area._name == "City") {
-            return this.getForecastDescription(area._forecast);
+            return area._forecast;
           }
         }
       }
     }
 
-    self.getForecastDescription = function(abbreviation) {
-      return neaapi.getForecastDescription(abbreviation);
-    }
 }]);
