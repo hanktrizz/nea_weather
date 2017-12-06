@@ -1,11 +1,12 @@
-<h1>Hello from {{$ctrl.test}}!</h1>
 
-<p> {{ $ctrl.getTitle() }}</p>
-<p> {{ $ctrl.getForecastDate() }}</p> 
-<p> {{ $ctrl.getValidTime() }}</p>
+<div class="row">
+	<div class="col">
+		<h2> {{ $ctrl.getTitle() }}</h2>
+	</div>
+</div>
 
-<table border=1>
-	<thead>
+<table class="table table-striped table-responsive">
+	<thead class="thead-light">
 		<tr>
 			<th>Day</th>
 			<th>Forecast</th>

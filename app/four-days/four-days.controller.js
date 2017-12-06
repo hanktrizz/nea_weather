@@ -46,7 +46,7 @@ angular.module('fourDays')
       if(self.data) {
         var temperatures = self.data.channel.item.weatherForecast.temperature;
         return temperatures.map(function(item) {
-          return item._low + " - " + item._high;
+          return item._low + "° C - " + item._high + "° C";
         });
       }
     }
@@ -55,7 +55,7 @@ angular.module('fourDays')
       if(self.data) {
         var humidity = self.data.channel.item.weatherForecast.relativeHumidity;
         return humidity.map(function(item) {
-          return item._low + " - " + item._high;
+          return item._low + "% - " + item._high + "%";
         });
       }
     }
