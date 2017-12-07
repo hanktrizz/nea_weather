@@ -2,7 +2,6 @@ angular.module('pm25')
 
 .controller('Pm25Controller', ['neaapi', function (neaapi) {
     var self = this;
-		self.test = "PM 25 controller";
     
     self.abbrs = {"rNO" : "North Region", 
                   "rSO" : "South Region",
@@ -17,7 +16,6 @@ angular.module('pm25')
     
     neaapi.pm25().get(function(data){
       self.data = data;
-      console.log(self.data);
     });
 
     self.getTitle = function () {
@@ -75,7 +73,6 @@ angular.module('pm25')
 
     self.getDate = function(str) {
       var s = str.slice(0,4) + "-" + str.slice(4,6) + "-" + str.slice(6,8) + " " + str.slice(8,10) + ":" + str.slice(10,12) + ":" + str.slice(12,14);
-      console.log(str + " ---> " + s);
       return s;
     }
 
