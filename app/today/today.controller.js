@@ -2,8 +2,6 @@ angular.module('nowcast')
 
 .controller("TodayController", ['neaapi', function (neaapi) {
     var self = this;
-
-	self.test = "today controller";
     
     neaapi.today().get(function(data){
       self.data = data;

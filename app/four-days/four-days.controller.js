@@ -2,7 +2,6 @@ angular.module('fourDays')
 
 .controller('FourDaysController', ['neaapi', function (neaapi) {
     var self = this;
-	self.test = "four days controller";
     
     neaapi.fourDays().get(function(data){
       self.data = data;
