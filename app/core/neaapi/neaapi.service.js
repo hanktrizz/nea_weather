@@ -2,7 +2,7 @@ angular.module('core.neaapi')
 
 .service('neaapi', ['$http', '$resource', function($http, $resource) {
 
-	var url = "https://api.nea.gov.sg/api/WebAPI/?dataset=";
+	var url = "http://api.nea.gov.sg/api/WebAPI/?dataset=";
 	var key = "&keyref=781CF461BB6606ADC49D8386041BBFD2708A29DB3A0C910C";
 	
 	var nowcastURL = url + "2hr_nowcast" + key;
