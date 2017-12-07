@@ -1,7 +1,7 @@
 
 <div class="row">
 	<div ng-controller="NowcastController as now" class="col">
-		<h2>{{ now.getCentralWeatherForecast() }}</h2>
+		<h2 style="text-align: center;">{{ now.getCentralWeatherForecast() }}</h2>
 	</div>
 
 	<div ng-controller="TodayController as today" class="col">
@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-<div ng-controller="FourDaysController as fourdays" class="row">
+<div style="padding-top: 20px;" ng-controller="FourDaysController as fourdays" class="row">
 	<div ng-repeat="day in fourdays.getDays()" class="col">
 		<h2>{{ fourdays.getDays()[$index] }}</h2>
 		<h3>{{ fourdays.getTemperatures()[$index] }}</h3>
