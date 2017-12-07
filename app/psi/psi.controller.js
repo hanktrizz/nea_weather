@@ -2,7 +2,6 @@ angular.module('psi')
 
 .controller("PsiController", ['neaapi', function (neaapi) {
     var self = this;
-		self.test = "PSI controller";
     
     self.abbrs = {"NRS" : "National Reporting Stations",
                   "rNO" : "North Region", 
@@ -22,7 +21,6 @@ angular.module('psi')
 
     neaapi.psi().get(function(data){
       self.data = data;
-      console.log(self.data);
     });
 
     self.getTitle = function () {
