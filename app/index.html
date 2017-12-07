@@ -10,8 +10,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
     <script src="xml2json.min.js"></script>
@@ -45,6 +48,41 @@
     <script src="pm25/pm25.controller.js"></script>
     <script src="pm25/pm25.component.js"></script>
 
+    <style type="text/css">
+      .view-container {
+        position: relative;
+      }
+
+      .view-frame.ng-enter,
+      .view-frame.ng-leave {
+        background: white;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .view-frame.ng-enter {
+        animation: 1s fade-in;
+        z-index: 100;
+      }
+
+      .view-frame.ng-leave {
+        animation: 1s fade-out;
+        z-index: 99;
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      @keyframes fade-out {
+        from { opacity: 1; }
+        to   { opacity: 0; }
+      }
+    </style>
+
   </head>
 
   <body>
@@ -69,7 +107,7 @@
                   <a class="nav-link" href="#!/today">24 Hours Forecast</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#!/fourDays">Four Days Outlook</a>
+                  <a class="nav-link" href="#!/fourDays">Four Days Forecast</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#!/psi">PSI Readings</a>
@@ -78,14 +116,16 @@
                   <a class="nav-link" href="#!/pm25">PM 2.5 Readings</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#!/heavyRain">Heavy Rain Warnings</a>
+                  <a class="nav-link" href="#!/heavyRain">Heavy Rain Warning</a>
                 </li>
               </ul>
           </div>
         </nav>
       </div>
 
-      <div ng-view></div>
+      <div class="view-container">
+        <div ng-view class="view-frame"></div>
+      </div>
 
   </div>
 
