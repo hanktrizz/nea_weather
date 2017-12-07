@@ -2,7 +2,6 @@ angular.module('nowcast')
 
 .controller('NowcastController', ['neaapi', function(neaapi){
   var self = this;
-    self.test = "nowcast controller";
 
     neaapi.nowcast().get(function(data){
       self.data = data;
