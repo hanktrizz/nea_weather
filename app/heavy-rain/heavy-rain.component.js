@@ -3,7 +3,6 @@ angular.module('heavyRain')
 	templateUrl: 'heavy-rain/heavy-rain.template.html',
 	controller: ['neaapi', function HeavyRainController (neaapi) {
     var self = this;
-		self.test = "heavy rain warning controller";
     
     neaapi.heavyRain().get(function(data){
       self.data = data;
@@ -23,8 +22,11 @@ angular.module('heavyRain')
     
     self.getWarning = function() {
       if(self.data) {
-        return self.data.channel.item.warning;
-        return days;
+        if(self.data.channel.item.warning == "NIL") {
+          return "No heavy rain warnings";
+        } else {
+          return self.data.channel.item.warning;
+        }
       }
     }
 
