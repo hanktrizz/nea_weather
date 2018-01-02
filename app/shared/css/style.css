@@ -33,6 +33,11 @@ html, body {
 
 .active {
     border: 3px #E9ECEF solid;
+    border-radius: 10px;
+}
+
+.inactive {
+    border: 3px #FAFDFF00 solid;
 }
 
 /*Fade in animation*/

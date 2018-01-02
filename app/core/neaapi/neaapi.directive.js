@@ -14,10 +14,14 @@ angular
         var firstTime = true;
 
         function setActive(element, menuId) { //nested function that adds the css class
-            if (currentActive.getActiveMenuId() === menuId)
+            if (currentActive.getActiveMenuId() === menuId) {
                 element.addClass('active');
-            else
+                element.removeClass('inactive')
+            }
+            else {
                 element.removeClass('active');
+                element.addClass('inactive');
+            }
         }
 
         return function (scope, element, attrs) {
