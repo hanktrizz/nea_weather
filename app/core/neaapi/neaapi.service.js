@@ -29,8 +29,8 @@ angular.module('core.neaapi')
             "LR": "Light Rain",
             "LS": "Light Showers",
             "OC": "Overcast",
-            "PC": "Partly Cloud (Day)",
-            "PN": "Partly Cloud (Night)",
+            "PC": "Partly Cloudy (Day)",
+            "PN": "Partly Cloudy (Night)",
             "PS": "Passing Showers",
             "RA": "Moderate Rain",
             "SH": "Showers",
@@ -108,16 +108,33 @@ angular.module('core.neaapi')
             }
         }
     }])
-    //NOT implemented yet
-    .service('timebasedUtilities', [function () {
-        var time = "";
-
+    .service('timeUtils', [function () {
+        var time = new Date();
         return {
-            getHour: function () {
-                return "f o'clock";
+            getHour: function (fmt24hrs) {
+                fmt24hrs = fmt24hrs || 0;
+                var hour = time.getHours();
+                if (fmt24hrs)
+                    return hour;
+                else
+                    return hour > 12 ? hour - 12 : hour;
             },
-            getAMPM: function () {
-                return "PM";
+            getAmPm: function () {
+                if (time.getHours() >= 12)
+                    return "PM";
+                else
+                    return "AM";
+            }
+        }
+    }])
+    .service('currentActive', [function () {
+        var activeMenuId = "";
+        return {
+            setActiveMenuId: function (menuId) {
+                activeMenuId = menuId;
+            },
+            getActiveMenuId: function () {
+                return activeMenuId;
             }
         }
     }]);
