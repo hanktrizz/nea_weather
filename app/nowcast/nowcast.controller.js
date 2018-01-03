@@ -58,20 +58,6 @@ angular.module('nowcast')
 
         self.paginate = function () {
             if (self.data) {
-                var cols = [
-                    {
-                        name: '_forecast',
-                        orderDesc: false
-                    }, {
-                        name: '_lat',
-                        orderDesc: false
-                    }, {
-                        name: '_lon',
-                        orderDesc: false
-                    }, {
-                        name: '_name',
-                        orderDesc: false
-                    }];
 
                 //following variables are required for data-binding in the template
                 self.totalItems = self.allCandidates.length;
@@ -79,25 +65,24 @@ angular.module('nowcast')
                 self.itemsPerPage = 7;
 
                 $scope.$watch('$ctrl.currentPage', function (newValue, oldValue) {
-                    setPagingData(self.currentPage);
+                    setPagingData();
                 });
 
                 $scope.$watch('$ctrl.searchKeyword', function (newValue, oldValue) {
                     if (newValue !== oldValue) {
-                        self.aCandidates = filterFilter(self.allCandidates, newValue);
-                        self.currentPage = 1;
-                        self.totalItems = self.aCandidates.length;
+                        setPagingData();
                     }
-                    if (newValue === "")
-                        setPagingData(self.currentPage);
-
                 });
 
-                function setPagingData(page) {
-                    self.currentPage = page;
-                    var pagedData = self.allCandidates.slice((page - 1) * self.itemsPerPage, page * self.itemsPerPage);
+                // no need to reset page number if number of filtered items are too little. The pagination will take care of it
+                function setPagingData() {
+                    self.filteredCandidates = filterFilter(self.allCandidates, self.searchKeyword);
+                    self.totalItems = self.filteredCandidates.length;
+                    var pagedData = self.filteredCandidates.slice((self.currentPage - 1) * self.itemsPerPage, self.currentPage * self.itemsPerPage);
                     self.aCandidates = pagedData;
+
                 }
+
             }
         }
     }]);
