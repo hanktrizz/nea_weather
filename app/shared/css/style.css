@@ -162,38 +162,6 @@ h2, h4 {
     margin: 15px 0;
 }
 
-/*nowcast-specific styles have been moved from template to below*/
-.nowcast-item.ng-enter,
-.nowcast-item.ng-leave,
-.nowcast-item.ng-move {
-    transition: 0.5s linear all;
-}
-
-.nowcast-item.ng-enter,
-.nowcast-item.ng-move {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-}
-
-.nowcast-item.ng-enter.ng-enter-active,
-.nowcast-item.ng-move.ng-move-active {
-    height: 120px;
-    opacity: 1;
-}
-
-.nowcast-item.ng-leave {
-    opacity: 1;
-    overflow: hidden;
-}
-
-.nowcast-item.ng-leave.ng-leave-active {
-    height: 0;
-    opacity: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
 /*
     Bootstrap pagination index styling
     NOTE: latest version of Bootstrap v4.x.x onward does not support angular-ui components anymore
@@ -246,36 +214,10 @@ h2, h4 {
     border-color: #fff;
 }
 
-/*nowcast styles moved here from template*/
-.nowcast-item.ng-enter,
-.nowcast-item.ng-leave,
-.nowcast-item.ng-move {
-    transition: 0.5s linear all;
-}
-
-.nowcast-item.ng-enter,
-.nowcast-item.ng-move {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-}
-
-.nowcast-item.ng-enter.ng-enter-active,
-.nowcast-item.ng-move.ng-move-active {
-    height: 120px;
-    opacity: 1;
-}
-
-.nowcast-item.ng-leave {
-    opacity: 1;
-    overflow: hidden;
-}
-
-.nowcast-item.ng-leave.ng-leave-active {
-    height: 0;
-    opacity: 0;
-    padding-bottom: 0;
-    padding-top: 0;
+.nowcast-item.ng-enter {
+    /*transition: 0.5s linear all;*/
+    animation: 1s fade-in;
+    z-index: 100;
 }
 
 /*General styling plus image blurring technique on nowcast*/
