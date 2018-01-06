@@ -22,7 +22,7 @@ html, body {
     background-color: rgba(0, 0, 0, 0.0) !important;
 }
 
-h2, h4 {
+h2, h4, h5, .whiteParas {
     color: #eee;
 }
 
@@ -220,7 +220,7 @@ h2, h4 {
     z-index: 100;
 }
 
-/*General styling plus image blurring technique on nowcast*/
+/*General styling across all templates*/
 .form-control {
     margin-bottom: 10px;
 }
