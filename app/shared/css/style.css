@@ -1,6 +1,10 @@
 /*Imports*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
+/*******************************************************************************
+ *  Desktop Styling rules
+ ******************************************************************************/
+
 /*Full width and height image styles plus transparent menu*/
 html, body {
     margin: 0;
@@ -147,13 +151,6 @@ h2, h4, h5, .whiteParas {
     color: #eee;
     background: rgba(0, 0, 0, 0.7);
     padding: 0;
-    /*margin: 10px;*/
-    /*border: 1px solid rgba(0, 0, 0, 0.25);*/
-    /*border-radius: 10px 10px 2px 2px;*/
-    /*box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);*/
-    /*-o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);*/
-    /*-webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);*/
-    /*-moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);*/
 }
 
 #landingPageExtraInfo div {
@@ -162,11 +159,11 @@ h2, h4, h5, .whiteParas {
     margin: 15px 0;
 }
 
-/*
-    Bootstrap pagination index styling
-    NOTE: latest version of Bootstrap v4.x.x onward does not support angular-ui components anymore
-    hence, the following set of styles to fix the way it looks
-*/
+/*******************************************************************************
+ *  Bootstrap pagination index styling
+ *  NOTE: latest version of Bootstrap v4.x.x onward does not support angular-ui
+ *  components anymore. Hence, the following set of styles to fix the looks
+*******************************************************************************/
 #ulPaginator {
     margin: 0;
     padding: 0;
@@ -215,7 +212,6 @@ h2, h4, h5, .whiteParas {
 }
 
 .nowcast-item.ng-enter {
-    /*transition: 0.5s linear all;*/
     animation: 1s fade-in;
     z-index: 100;
 }
@@ -224,3 +220,101 @@ h2, h4, h5, .whiteParas {
 .form-control {
     margin-bottom: 10px;
 }
+
+.dShow {
+    display: none;
+}
+
+/*******************************************************************************
+ *  Specific media queries to adjust looks on mobile devices excl. tablets
+ ******************************************************************************/
+
+/*Mobile devices (phones) portrait and landscape*/
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+
+    /*In mobile view, hide the map pin, the clock face and the date*/
+    #mapPinDiv, #mapPinDiv > span, #mapPinDiv > img, #dDate {
+        display: none;
+    }
+
+    /*Remove all existing floats; we want all in top down vertical scroll*/
+    .fLeft, .fRight {
+        float: none;
+    }
+
+    #pLocation {
+        font-size: calc(1em + 1vw);
+    }
+
+    #pTempHiLow {
+        font-size: calc(2.5em + 2.5vw);
+    }
+
+    /*weather icon centering and resizing based on viewport*/
+    .weatherIconsOnly {
+        font-size: calc(6em + 6vw);
+    }
+
+    .dOverflowContainer > p, #pForecastDescription, #pLocation, #pTempHiLow {
+        text-align: center;
+    }
+
+    /*body actually*/
+    .outer {
+        background-repeat: no-repeat;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#30E8BF), to(#FF8235));
+        background-attachment: fixed;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+    }
+
+    /*temperature and weather icon group*/
+    #landingPageDiv1 {
+        width: 80%;
+        margin: auto;
+        position: inherit;
+    }
+
+    /*misc info and four days advance forecast*/
+    .forecastfour {
+        position: inherit;
+        background-color: transparent;
+    }
+
+    #landingPageExtraInfo div {
+        padding-left: 0;
+        font-size: calc(0.5em + 1vw);
+        margin: 0;
+    }
+
+    #landingPageExtraInfo {
+        margin: 5% 0;
+    }
+
+    .mFourDaysForecast p, .mFourDaysForecast h2, .mFourDaysForecast h3 {
+        margin: 0;
+    }
+
+    /*represents each "row" of forecast in the scrollable view*/
+    .mFourDaysForecast p:nth-child(2), .h3custom, .mFourDaysForecast p:nth-child(4) {
+        width: 33.33%;
+        float: left;
+        border-bottom: 1px solid #eeeeee;
+        height: 10vh;
+        line-height: 10vh;
+    }
+
+    .mFourDaysForecast p:nth-child(4) {
+        text-align: right;
+    }
+
+    .h3custom {
+        font-size: calc(1em + 1vw);
+    }
+}
+
+/*@media (min-width: 480px) and (max-width: 768px) {*/
+
+/*}*/
+

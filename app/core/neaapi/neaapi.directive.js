@@ -53,32 +53,9 @@ angular
             element.html(baseHtml);
         }
     }])
-    .directive('assignWeatherIcon', ['neaapi', function (neaapi) {
-        var groupedWeatherPatterns = [
-            "BR,FG,HZ,LH",                  //mist, haze kind
-            "HG,HT,TL",                     //thundery rains
-            "HR,HS,DR,LR,LS,RA,PS,SH",      //showery rains
-            "FA,FN,FW",                     //generally fair
-            "CL,OC",                        //cloudy
-            "PC,PN",                        //partly cloudy
-            "SK,SR,WR,WS",                  //windy rain
-            "SN,SS",                        //snowy type weather - who are we kidding
-            "SU",                           //sunny
-            "SW,WF,WC,WF"                   //windy
-        ];
-
-        var iconMatrix = [
-            "wi-smog",
-            "wi-thunderstorm",
-            "wi-rain",
-            "wi-day-sunny-overcast",
-            "wi-cloudy",
-            "wi-cloud",
-            "wi-rain-wind",
-            "wi-snow",
-            "wi-day-sunny",
-            "wi-strong-wind"
-        ];
+    .directive('assignWeatherIcon', ['neaapi', 'weatherToIcon', function (neaapi, weatherToIcon) {
+        var groupedWeatherPatterns = weatherToIcon.getWeatherPatternGroups();
+        var iconMatrix = weatherToIcon.getIconsMatrix();
         var prependHtml = "<i class=\"weatherIconsOnly wi ";
         var appendHtml = "\"></i>";
 
@@ -101,5 +78,30 @@ angular
             },
             restrict: "A"
         });
-    }]);
+    }])
+    //Can possibly combine this directive with the one above and separate based on logic.
+    //The only difference lies in whether there's an extra directive attribute or not.
+    //lazy to merge these for now. Will clean up code next time xD
+    .directive('assignWeatherIconWithInput', ['weatherToIcon', function (weatherToIcon) {
+        var groups = weatherToIcon.getWeatherPatternGroups();
+        var icons = weatherToIcon.getIconsMatrix();
+        var prependHtml = "<i class=\"mWeatherIcon wi ";
+        var appendHtml = "\"></i>";
 
+        return ({
+            link: function (scope, element, attrs) {
+                console.log("testing eval expression: " + attrs["theCode"]);
+                var neaIconCode = attrs["theCode"];
+                var index = -1;
+                for (var i = 0; i < groups.length; i++) {
+                    if (groups[i].indexOf(neaIconCode) > -1) {
+                        index = i;
+                        break;
+                    }
+                }
+                if (i != -1)
+                    element.html(prependHtml + icons[i] + appendHtml);
+            },
+            restrict: "AE"
+        });
+    }]);

@@ -13,7 +13,6 @@
 
         </div>
         <div class="dOverflowContainer">
-            <!-- planning to make the icons change based on particular weather pattern -->
             <p class="fLeft" data-assign-weather-icon></p>
             <div class="fLeft" id="pForecastDescription">
                 <div>{{ today.getMainForecastTerse() }}</div>
@@ -24,7 +23,7 @@
 </div>
 
 <div ng-controller="FourDaysController as fourdays" class="row forecastfour fixed-bottom">
-    <div class="col" id="landingPageExtraInfo">
+    <div class="col-md col-xs-12" id="landingPageExtraInfo">
         <div ng-controller="PsiController as psi">
             <strong>PSI</strong>: {{ psi.getNPSI() }} ({{ psi.getPSIDescriptor(psi.getNPSI()) }})
         </div>
@@ -35,9 +34,16 @@
             <strong>Humidity</strong>: {{ today.getHumidityLow() }}% - {{ today.getHumidityHigh() }}%
         </div>
     </div>
-    <div ng-repeat="day in fourdays.getDays()" class="col">
-        <h2>{{ fourdays.getDays()[$index] }}</h2>
-        <h3>{{ fourdays.getTemperatures()[$index] }}</h3>
-        <p>{{ fourdays.getForecastDescriptions()[$index] }}</p>
+    <div ng-repeat="day in fourdays.getDays()" class="col-md col-xs-12 mFourDaysForecast">
+        <h2 class="d-none d-sm-block">{{ fourdays.getDays()[$index] }}</h2>
+        <p class="d-block d-sm-none">{{fourdays.getDaysTerse(day)}}</p>
+
+        <h3 class="h3custom">{{ fourdays.getTemperatures()[$index] }}</h3>
+
+        <p>
+            <span id="spanLongDesc" class="d-none d-sm-block">{{ fourdays.getForecastDescriptions()[$index] }}</span>
+            <span id="spanShortDesc" class="d-block d-sm-none" data-assign-weather-icon-with-input
+                  data-the-code="{{fourdays.getForecastsIcons()[$index]}}"></span>
+        </p>
     </div>
 </div>
