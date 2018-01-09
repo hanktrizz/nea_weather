@@ -137,5 +137,49 @@ angular.module('core.neaapi')
                 return activeMenuId;
             }
         }
+    }])
+    .service('weatherToIcon', [function () {
+        var groupedWeatherPatterns = [
+            "BR,FG,HZ,LH",                  //mist, haze kind
+            "HG,HT,TL",                     //thundery rains
+            "HR,HS,DR,LR,LS,RA,PS,SH",      //showery rains
+            "FA,FN,FW",                     //generally fair
+            "CL,OC",                        //cloudy
+            "PC,PN",                        //partly cloudy
+            "SK,SR,WR,WS",                  //windy rain
+            "SN,SS",                        //snowy type weather - who are we kidding
+            "SU",                           //sunny
+            "SW,WF,WC"                      //windy
+        ];
+
+        var iconMatrix = [
+            "wi-smog",
+            "wi-thunderstorm",
+            "wi-rain",
+            "wi-day-sunny-overcast",
+            "wi-cloudy",
+            "wi-cloud",
+            "wi-rain-wind",
+            "wi-snow",
+            "wi-day-sunny",
+            "wi-strong-wind"
+        ];
+
+        return {
+            getWeatherPatternGroups: function () {
+                return groupedWeatherPatterns;
+            },
+            getIconsMatrix: function () {
+                return iconMatrix;
+            },
+            //The following length functions are wrappers around the length properties of the arrays.
+            //Use these functions when .length fails for weird some reason. Currently no need.
+            patternArrayLength: function () {
+                return groupedWeatherPatterns.length;
+            },
+            iconArrayLength: function () {
+                return iconMatrix.length;
+            }
+        }
     }]);
 
