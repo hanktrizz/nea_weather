@@ -21,8 +21,7 @@ We did not include these in the project.
 
 ### Compatibility
 
-Google Chrome, Chrome mobile.
-Internet Explorer (all versions) is not supported.
+Tested only on Google Chrome and Chrome mobile so far. Internet Explorer (all versions) is not supported.
 
 ## Contributing
 
