@@ -312,6 +312,10 @@ h2, h4, h5, .whiteParas {
     .h3custom {
         font-size: calc(1em + 1vw);
     }
+
+    .nav-item {
+        padding-left: 5px;
+    }
 }
 
 /*@media (min-width: 480px) and (max-width: 768px) {*/
